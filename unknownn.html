@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hacker Terminal Pro</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#020604;color:#00ff66;font-family:Consolas,monospace}
+canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.2}
+header{text-align:center;padding:20px;border-bottom:1px solid #00ff66;background:#020604}
+h1{text-shadow:0 0 12px #00ff66}
+#clock{font-size:22px}
+.panel,#terminalWindow{background:#001208f2;border:1px solid #00ff66;padding:18px;margin:18px auto;max-width:700px;box-shadow:0 0 12px #00441b}
+button{background:#00ff66;color:#001b08;padding:10px;border:0;margin:5px;cursor:pointer;font-weight:bold}
+input{display:block;width:100%;padding:12px;background:#000;color:#00ff66;border:1px solid #00ff66;margin:10px 0}
+#terminal{height:180px;overflow:auto;line-height:1.7}
+#title{background:#06401b;padding:12px;cursor:grab;touch-action:none}
+#barbox{border:1px solid #00ff66;height:18px;padding:2px}
+#bar{height:100%;width:0;background:#00ff66}
+#boot,#login{position:fixed;inset:0;background:#000;z-index:5;display:flex;justify-content:center;align-items:center;padding:20px}
+#boot{z-index:10}
+.box{width:100%;max-width:400px;border:1px solid #00ff66;padding:24px;background:#001208}
+small{color:#9affbd}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div id="boot"><div class="box">
+<h2>INITIALIZING SYSTEM...</h2>
+<p id="boottext">Loading modules...</p>
+<button onclick="startLogin()">START SYSTEM</button>
+</div></div>
+
+<div id="login" hidden><div class="box">
+<h2>◈ HACKER LOGIN</h2>
+<small>DEMO MODE — DO NOT USE REAL PASSWORDS</small>
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Demo password">
+<button onclick="enter()">LOGIN</button>
+<p id="msg"></p>
+</div></div>
+
+<header>
+<h1>⌘ HACKER TERMINAL PRO</h1>
+<small>● SIMULATION MODE ONLINE</small>
+<p id="clock"></p><p id="date"></p>
+</header>
+
+<main id="app" hidden>
+<div class="panel">
+<h3>CONTROL CENTER</h3>
+<p>Welcome, <span id="welcome"></span></p>
+<button onclick="toggleSound()" id="sound">SOUND: OFF</button>
+<button onclick="logout()">LOG OUT</button>
+</div>
+
+<div id="terminalWindow">
+<div id="title">▣ TERMINAL — DRAG THIS BAR</div>
+<div id="terminal"></div>
+<button onclick="command()">RUN COMMAND</button>
+<button onclick="clearTerminal()">CLEAR</button>
+</div>
+
+<div class="panel">
+<h3>SECURITY SCAN SIMULATOR</h3>
+<small>Visual demo only. No real systems are scanned.</small><br>
+<button onclick="scan()">START SCAN</button>
+<div id="barbox"><div id="bar"></div></div>
+<p id="scanmsg">Ready.</p>
+</div>
+
+<div class="panel">
+<h3>PASSWORD STRENGTH CHECKER</h3>
+<input id="sample" type="password" placeholder="Test a sample password">
+<button onclick="checkPass()">CHECK STRENGTH</button>
+<p id="strength"></p>
+</div>
+</main>
+
+<script>
+// MATRIX EFFECT
+const c=document.getElementById('matrix'),x=c.getContext('2d');
+let drops=[];
+function resize(){c.width=innerWidth;c.height=innerHeight;drops=Array(Math.floor(c.width/16)).fill(1)}
+onresize=resize;resize();
+setInterval(()=>{
+ x.fillStyle='rgba(0,0,0,.08)';x.fillRect(0,0,c.width,c.height);
+ x.fillStyle='#00ff66';x.font='15px monospace';
+ drops.forEach((y,i)=>{
+ x.fillText(String.fromCharCode(0x30A0+Math.random()*96),i*16,y*16);
+ drops[i]=y*16>c.height&&Math.random()>.97?0:y+1;
+ });
+},50);
+
+// CLOCK
+function updateClock(){
+ const d=new Date();
+ document.getElementById('clock').textContent=d.toLocaleTimeString();
+ document.getElementById('date').textContent=d.toLocaleDateString();
+}
+updateClock();setInterval(updateClock,1000);
+
+// STARTUP AND LOGIN
+const boot=document.getElementById('boot');
+const login=document.getElementById('login');
+const app=document.getElementById('app');
+function startLogin(){boot.hidden=true;login.hidden=false}
+document.getElementById('boottext').textContent=
+'Loading interface...\\nPreparing terminal...\\nDemo ready.';
+function enter(){
+ const u=document.getElementById('user').value.trim();
+ const p=document.getElementById('pass').value;
+ if(!u||!p){document.getElementById('msg').textContent='Enter both fields!';return}
+ document.getElementById('welcome').textContent=u;
+ login.hidden=true;app.hidden=false;
+ addLine('> Welcome, '+u);
+ addLine('> Simulation initialized.');
+ beep();
+}
+function logout(){app.hidden=true;login.hidden=false}
+document.getElementById('pass').addEventListener('keydown',e=>{if(e.key==='Enter')enter()});
+
+// DRAGGABLE TERMINAL
+const win=document.getElementById('terminalWindow');
+const handle=document.getElementById('title');
+let dragging=false,dx=0,dy=0;
+handle.addEventListener('pointerdown',e=>{
+ dragging=true;const r=win.getBoundingClientRect();
+ dx=e.clientX-r.left;dy=e.clientY-r.top;
+ win.style.position='fixed';win.style.width=Math.min(700,innerWidth-20)+'px';
+ win.style.margin='0';handle.setPointerCapture(e.pointerId);
+});
+handle.addEventListener('pointermove',e=>{
+ if(!dragging)return;
+ win.style.left=Math.max(0,Math.min(innerWidth-win.offsetWidth,e.clientX-dx))+'px';
+ win.style.top=Math.max(0,Math.min(innerHeight-50,e.clientY-dy))+'px';
+});
+handle.addEventListener('pointerup',()=>dragging=false);
+handle.addEventListener('pointercancel',()=>dragging=false);
+
+// TERMINAL
+const lines=[
+'> Initializing demo terminal...',
+'> Checking local interface...',
+'> Encryption display: SIMULATED',
+'> No external system connected.',
+'> STATUS: READY'
+];
+let index=0;
+function addLine(t){
+ const d=document.createElement('div');d.textContent=t;
+ document.getElementById('terminal').appendChild(d);
+ document.getElementById('terminal').scrollTop=99999;
+}
+function command(){
+ if(index<lines.length)addLine(lines[index++]);
+ else addLine('> Demo complete.');
+ beep();
+}
+function clearTerminal(){document.getElementById('terminal').replaceChildren();index=0}
+
+// SOUND EFFECTS — generated locally
+let soundOn=false,audio;
+function toggleSound(){
+ soundOn=!soundOn;
+ document.getElementById('sound').textContent='SOUND: '+(soundOn?'ON':'OFF');
+ if(soundOn)beep();
+}
+function beep(){
+ if(!soundOn)return;
+ try{
+ audio=audio||new(window.AudioContext||window.webkitAudioContext)();
+ const o=audio.createOscillator(),g=audio.createGain();
+ o.frequency.value=650;g.gain.value=.035;
+ o.connect(g);g.connect(audio.destination);
+ o.start();o.stop(audio.currentTime+.08);
+ }catch(e){}
+}
+
+// SIMULATED SCAN
+let scanning=false;
+function scan(){
+ if(scanning)return;scanning=true;
+ let n=0;const bar=document.getElementById('bar');
+ document.getElementById('scanmsg').textContent='Scanning simulation...';
+ const t=setInterval(()=>{
+ n+=5;bar.style.width=n+'%';
+ if(n>=100){
+ clearInterval(t);scanning=false;
+ document.getElementById('scanmsg').textContent='Demo complete — no real scan performed.';
+ beep();
+ }
+ },70);
+}
+
+// PASSWORD STRENGTH
+function checkPass(){
+ const p=document.getElementById('sample').value;
+ let n=0;
+ if(p.length>=8)n++;
+ if(p.length>=12)n++;
+ if(/[a-z]/.test(p)&&/[A-Z]/.test(p))n++;
+ if(/[0-9]/.test(p))n++;
+ if(/[^A-Za-z0-9]/.test(p))n++;
+ document.getElementById('strength').textContent=!p?'Enter a sample password.':
+ n<=1?'Strength: WEAK':n<=3?'Strength: MEDIUM':'Strength: STRONG';
+}
+</script>
+</body>
+</html>

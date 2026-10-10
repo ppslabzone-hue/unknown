@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>know your rights </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Students, Constitution, Acts & NEP 2020</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, "Noto Sans Devanagari", sans-serif;
+
+            background: linear-gradient(
+                to bottom,
+                #ff9933 0%,
+                #ff9933 33%,
+                white 33%,
+                white 66%,
+                #138808 66%,
+                #138808 100%
+            );
+
+            color: #222;
+        }
+
+        /* ================= VIDEO BACKGROUND ================= */
+
+        .background-video {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            z-index: -2;
+        }
+
+        /* ================= TRICOLOUR OVERLAY ================= */
+
+        .tricolour-overlay {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 153, 51, 0.55),
+                rgba(255, 255, 255, 0.35),
+                rgba(19, 136, 8, 0.55)
+            );
+
+            z-index: -1;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            width: 92%;
+            max-width: 1200px;
+
+            margin: 30px auto 20px;
+
+            padding: 35px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border-radius: 20px;
+
+            border-top: 10px solid #ff9933;
+            border-bottom: 10px solid #138808;
+
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        }
+
+        header h1 {
+            margin: 0;
+
+            color: #000080;
+
+            font-size: 38px;
+
+            text-transform: uppercase;
+        }
+
+        header h2 {
+            color: #ff6600;
+
+            margin-top: 15px;
+
+            font-size: 22px;
+        }
+
+        header p {
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        nav {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 10;
+
+            width: 100%;
+
+            background: rgba(0, 0, 128, 0.95);
+
+            padding: 12px;
+
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+
+            text-decoration: none;
+
+            margin: 0 12px;
+
+            font-weight: bold;
+
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #ff9933;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+
+            margin: 25px auto 50px;
+
+            padding: 30px;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            border-radius: 20px;
+
+            box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+        }
+
+        .section-title {
+            text-align: center;
+
+            color: #000080;
+
+            font-size: 30px;
+
+            margin: 25px 0 30px;
+
+            padding-bottom: 12px;
+
+            border-bottom: 5px solid #ff9933;
+        }
+
+        /* ================= ARTICLE CARDS ================= */
+
+        .article {
+            margin: 20px 0;
+
+            padding: 24px;
+
+            background: linear-gradient(
+                to right,
+                #fff5e8,
+                white,
+                #eef8ed
+            );
+
+            border-left: 7px solid #ff9933;
+
+            border-right: 7px solid #138808;
+
+            border-radius: 14px;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+
+            transition: 0.3s;
+        }
+
+        .article:hover {
+            transform: translateY(-4px);
+
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .article h3 {
+            margin-top: 0;
+
+            color: #000080;
+
+            font-size: 23px;
+        }
+
+        .english {
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+        .hindi {
+            font-size: 18px;
+
+            line-height: 1.9;
+
+            color: #444;
+        }
+
+        .label {
+            color: #ff6600;
+
+            font-weight: bold;
+        }
+
+        /* ================= IMPORTANT ARTICLES ================= */
+
+        .important {
+            border-left-color: #000080;
+
+            border-right-color: #000080;
+
+            background: linear-gradient(
+                to right,
+                #fff0df,
+                #ffffff,
+                #e8f0ff
+            );
+        }
+
+        /* ================= ACT TABLE ================= */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            background: white;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        th {
+            background: #000080;
+
+            color: white;
+
+            padding: 15px;
+
+            font-size: 17px;
+        }
+
+        td {
+            padding: 15px;
+
+            border: 1px solid #ddd;
+
+            line-height: 1.6;
+
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background: #f7f7f7;
+        }
+
+        tr:hover {
+            background: #fff2df;
+        }
+
+        /* ================= NEP ================= */
+
+        .nep-box {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 20px;
+
+            margin-top: 25px;
+        }
+
+        .nep-card {
+            padding: 22px;
+
+            border-radius: 15px;
+
+            background: linear-gradient(
+                135deg,
+                #fff4e5,
+                white,
+                #eaf6e8
+            );
+
+            border-top: 5px solid #ff9933;
+
+            border-bottom: 5px solid #138808;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+
+            transition: 0.3s;
+        }
+
+        .nep-card:hover {
+            transform: scale(1.02);
+        }
+
+        .nep-card h3 {
+            color: #000080;
+
+            margin-top: 0;
+
+            font-size: 20px;
+        }
+
+        .nep-card p {
+            line-height: 1.7;
+
+            font-size: 16px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+
+            padding: 30px;
+
+            margin-top: 30px;
+
+            background: #000080;
+
+            color: white;
+
+            border-top: 8px solid #ff9933;
+
+            border-bottom: 8px solid #138808;
+        }
+
+        footer h2 {
+            margin: 0 0 10px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 750px) {
+
+            header,
+            .container {
+                width: 94%;
+
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            header h2 {
+                font-size: 18px;
+            }
+
+            nav a {
+                display: inline-block;
+
+                margin: 5px;
+
+                font-size: 13px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .nep-box {
+                grid-template-columns: 1fr;
+            }
+
+            .article h3 {
+                font-size: 20px;
+            }
+
+            .english,
+            .hindi {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     AUTOMATIC INDIAN FLAG VIDEO
+====================================================== -->
+
+<video class="background-video"
+       autoplay
+       muted
+       loop
+       playsinline>
+
+    <source src="flag.mp4" type="video/mp4">
+
+    Your browser does not support video.
+
+</video>
+
+
+<div class="tricolour-overlay"></div>
+
+
+<!-- ======================================================
+     HEADER
+====================================================== -->
+
+<header>
+
+    <h1>
+        🇮🇳 Students & The Constitution of India 🇮🇳
+    </h1>
+
+    <h2>
+        भारतीय संविधान, शिक्षा अधिनियम एवं NEP 2020
+    </h2>
+
+    <p>
+        Important Constitutional Articles, Major Education Acts
+        and National Education Policy 2020
+    </p>
+
+    <p>
+        विद्यार्थियों से संबंधित महत्वपूर्ण संवैधानिक अनुच्छेद,
+        प्रमुख शिक्षा अधिनियम एवं राष्ट्रीय शिक्षा नीति 2020
+    </p>
+
+</header>
+
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+
+<nav>
+
+    <a href="#articles">Constitution</a>
+
+    <a href="#acts">Acts</a>
+
+    <a href="#nep">NEP 2020</a>
+
+</nav>
+
+
+<!-- ======================================================
+     MAIN CONTENT
+====================================================== -->
+
+<div class="container">
+
+
+<!-- ======================================================
+     CONSTITUTIONAL ARTICLES
+====================================================== -->
+
+<h2 id="articles" class="section-title">
+    📜 Constitutional Articles
+    <br>
+    संवैधानिक अनुच्छेद
+</h2>
+
+
+<!-- Article 14 -->
+
+<div class="article">
+
+    <h3>Article 14 — Equality Before Law</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        The State shall not deny any person equality before the law
+        or equal protection of the laws within the territory of India.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        राज्य किसी भी व्यक्ति को कानून के समक्ष समानता या भारत के
+        क्षेत्र में कानूनों के समान संरक्षण से वंचित नहीं करेगा।
+    </p>
+
+</div>
+
+
+<!-- Article 15(1) -->
+
+<div class="article">
+
+    <h3>Article 15(1) — Prohibition of Discrimination</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        The State shall not discriminate against any citizen on specified
+        grounds including religion, race, caste, sex or place of birth.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        राज्य किसी नागरिक के साथ धर्म, मूलवंश, जाति, लिंग या जन्मस्थान
+        आदि के आधार पर भेदभाव नहीं करेगा।
+    </p>
+
+</div>
+
+
+<!-- Article 15(3) -->
+
+<div class="article">
+
+    <h3>Article 15(3) — Special Provisions for Children</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        The State may make special provisions for women and children.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        राज्य महिलाओं और बच्चों के लिए विशेष प्रावधान कर सकता है।
+    </p>
+
+</div>
+
+
+<!-- Article 15(4) -->
+
+<div class="article">
+
+    <h3>Article 15(4) — Educational Advancement</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        The State may make special provisions for the advancement of
+        socially and educationally backward classes and for SCs and STs.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        राज्य सामाजिक और शैक्षिक रूप से पिछड़े वर्गों तथा अनुसूचित जाति
+        और अनुसूचित जनजाति के उन्नति के लिए विशेष प्रावधान कर सकता है।
+    </p>
+
+</div>
+
+
+<!-- Article 15(5) -->
+
+<div class="article">
+
+    <h3>Article 15(5) — Educational Admission</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        The State may make special provisions relating to admission
+        to educational institutions for specified disadvantaged groups,
+        subject to the Constitution.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        राज्य संविधान के अधीन निर्धारित वंचित वर्गों के लिए
+        शैक्षणिक संस्थानों में प्रवेश से संबंधित विशेष प्रावधान कर सकता है।
+    </p>
+
+</div>
+
+
+<!-- Article 19 -->
+
+<div class="article">
+
+    <h3>Article 19(1)(a) — Freedom of Speech and Expression</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        Citizens have the right to freedom of speech and expression,
+        subject to constitutional restrictions.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        नागरिकों को संवैधानिक प्रतिबंधों के अधीन वाक् और अभिव्यक्ति
+        की स्वतंत्रता का अधिकार है।
+    </p>
+
+</div>
+
+
+<!-- Article 21 -->
+
+<div class="article">
+
+    <h3>Article 21 — Life and Personal Liberty</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        No person shall be deprived of life or personal liberty
+        except according to procedure established by law.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        किसी व्यक्ति को विधि द्वारा स्थापित प्रक्रिया के अनुसार के
+        अलावा उसके जीवन या व्यक्तिगत स्वतंत्रता से वंचित नहीं किया जाएगा।
+    </p>
+
+</div>
+
+
+<!-- Article 21A -->
+
+<div class="article important">
+
+    <h3>Article 21A — Right to Education ⭐</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        The State shall provide free and compulsory education to
+        all children between 6 and 14 years of age in the manner
+        determined by law.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        राज्य 6 से 14 वर्ष की आयु के सभी बच्चों के लिए कानून द्वारा
+        निर्धारित तरीके से निःशुल्क और अनिवार्य शिक्षा प्रदान करेगा।
+    </p>
+
+</div>
+
+
+<!-- Article 24 -->
+
+<div class="article">
+
+    <h3>Article 24 — Protection from Hazardous Child Labour</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        No child below 14 years shall be employed in a factory,
+        mine or other hazardous employment.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        14 वर्ष से कम आयु के किसी बच्चे को कारखाने, खान या
+        किसी जोखिमपूर्ण रोजगार में नियोजित नहीं किया जाएगा।
+    </p>
+
+</div>
+
+
+<!-- Articles 25-28 -->
+
+<div class="article">
+
+    <h3>Articles 25–28 — Freedom of Religion</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        These provisions protect freedom of religion.
+        Article 28 specifically deals with religious instruction
+        in educational institutions.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        ये प्रावधान धार्मिक स्वतंत्रता की रक्षा करते हैं।
+        अनुच्छेद 28 विशेष रूप से शैक्षणिक संस्थाओं में धार्मिक
+        शिक्षा से संबंधित है।
+    </p>
+
+</div>
+
+
+<!-- Article 29 -->
+
+<div class="article">
+
+    <h3>Article 29 — Cultural and Educational Interests</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        Citizens with a distinct language, script or culture have
+        the right to conserve it. Article 29(2) protects admission
+        from discrimination on specified grounds in State-maintained
+        or State-aided educational institutions.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        विशिष्ट भाषा, लिपि या संस्कृति वाले नागरिकों को उसे बनाए रखने
+        का अधिकार है। अनुच्छेद 29(2) निर्धारित आधारों पर राज्य द्वारा
+        संचालित या सहायता प्राप्त शिक्षण संस्थाओं में प्रवेश से
+        भेदभाव से सुरक्षा देता है।
+    </p>
+
+</div>
+
+
+<!-- Article 30 -->
+
+<div class="article">
+
+    <h3>Article 30 — Minority Educational Institutions</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        Religious and linguistic minorities have the right to establish
+        and administer educational institutions of their choice.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        धार्मिक और भाषायी अल्पसंख्यकों को अपनी पसंद की शैक्षणिक
+        संस्थाएँ स्थापित और संचालित करने का अधिकार है।
+    </p>
+
+</div>
+
+
+<!-- Article 39 -->
+
+<div class="article">
+
+    <h3>Article 39(e) & 39(f) — Protection of Children</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        The State should protect children from abuse and ensure
+        opportunities and facilities for healthy development,
+        freedom and dignity.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        राज्य को बच्चों को शोषण से बचाना चाहिए तथा स्वस्थ विकास,
+        स्वतंत्रता और गरिमा के साथ विकास के अवसर और सुविधाएँ
+        उपलब्ध कराने का प्रयास करना चाहिए।
+    </p>
+
+</div>
+
+
+<!-- Article 45 -->
+
+<div class="article">
+
+    <h3>Article 45 — Early Childhood Education</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        The State shall endeavour to provide early childhood care
+        and education for all children until they complete six years.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        राज्य छह वर्ष की आयु पूरी करने तक सभी बच्चों के लिए
+        प्रारंभिक बाल्यावस्था देखभाल और शिक्षा प्रदान करने का
+        प्रयास करेगा।
+    </p>
+
+</div>
+
+
+<!-- Article 46 -->
+
+<div class="article">
+
+    <h3>Article 46 — Educational Interests of Weaker Sections</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        The State shall promote the educational and economic interests
+        of weaker sections, particularly SCs and STs.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        राज्य कमजोर वर्गों, विशेषकर अनुसूचित जाति और अनुसूचित जनजाति
+        के शैक्षिक और आर्थिक हितों को बढ़ावा देगा।
+    </p>
+
+</div>
+
+
+<!-- Article 51A -->
+
+<div class="article important">
+
+    <h3>Article 51A(k) — Fundamental Duty ⭐</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        It is the duty of every parent or guardian to provide
+        opportunities for education to their child or ward
+        between 6 and 14 years.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        प्रत्येक माता-पिता या अभिभावक का यह कर्तव्य है कि वे
+        6 से 14 वर्ष के अपने बच्चे या संरक्षक को शिक्षा के अवसर
+        प्रदान करें।
+    </p>
+
+</div>
+
+
+<!-- Article 350A -->
+
+<div class="article">
+
+    <h3>Article 350A — Mother Tongue Instruction</h3>
+
+    <p class="english">
+        <span class="label">English:</span>
+        The State should endeavour to provide adequate facilities
+        for instruction in the mother tongue at the primary stage
+        for children belonging to linguistic minority groups.
+    </p>
+
+    <p class="hindi">
+        <span class="label">हिंदी:</span>
+        राज्य भाषायी अल्पसंख्यक समूहों के बच्चों के लिए प्राथमिक
+        स्तर पर मातृभाषा में शिक्षा की पर्याप्त सुविधाएँ उपलब्ध
+        कराने का प्रयास करेगा।
+    </p>
+
+</div>
+
+
+<!-- ======================================================
+     MAJOR ACTS
+====================================================== -->
+
+<h2 id="acts" class="section-title">
+
+    ⚖️ Major Education & Child-Related Acts
+
+    <br>
+
+    प्रमुख शिक्षा एवं बाल-संबंधी अधिनियम
+
+</h2>
+
+
+<div class="table-container">
+
+<table>
+
+    <tr>
+
+        <th>Year / वर्ष</th>
+
+        <th>Act / अधिनियम</th>
+
+        <th>Student / Child Relevance<br>विद्यार्थी/बाल संबंध</th>
+
+    </tr>
+
+
+    <tr>
+
+        <td>1956</td>
+
+        <td>
+            UGC Act, 1956
+            <br>
+            विश्वविद्यालय अनुदान आयोग अधिनियम
+        </td>
+
+        <td>
+            <b>English:</b> Framework for coordination and standards
+            in higher education.
+            <br><br>
+
+            <b>हिंदी:</b> उच्च शिक्षा में समन्वय और मानकों से संबंधित
+            कानूनी ढाँचा।
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <td>2005</td>
+
+        <td>
+            Right to Information Act, 2005
+            <br>
+            सूचना का अधिकार अधिनियम
+        </td>
+
+        <td>
+            <b>English:</b> Provides a legal mechanism to seek
+            information from public authorities, subject to the Act.
+            <br><br>
+
+            <b>हिंदी:</b> अधिनियम के प्रावधानों के अधीन सार्वजनिक
+            प्राधिकरणों से सूचना प्राप्त करने का कानूनी माध्यम।
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <td>2005</td>
+
+        <td>
+            Commissions for Protection of Child Rights Act, 2005
+        </td>
+
+        <td>
+            <b>English:</b> Provides the framework for commissions
+            concerned with protection of child rights.
+            <br><br>
+
+            <b>हिंदी:</b> बाल अधिकारों की सुरक्षा से संबंधित
+            आयोगों का कानूनी ढाँचा।
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <td>2009</td>
+
+        <td>
+            Right of Children to Free and Compulsory Education
+            Act, 2009
+            <br>
+            निःशुल्क और अनिवार्य बाल शिक्षा का अधिकार अधिनियम
+        </td>
+
+        <td>
+            <b>English:</b> Gives statutory effect to the right to
+            free and compulsory education for children covered by
+            Article 21A.
+            <br><br>
+
+            <b>हिंदी:</b> अनुच्छेद 21A के अंतर्गत आने वाले बच्चों की
+            निःशुल्क और अनिवार्य शिक्षा के अधिकार को वैधानिक आधार देता है।
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <td>2012</td>
+
+        <td>
+            Protection of Children from Sexual Offences Act
+            <br>
+            POCSO Act
+        </td>
+
+        <td>
+            <b>English:</b> Protects children from sexual offences
+            and provides procedures for dealing with such offences.
+            <br><br>
+
+            <b>हिंदी:</b> बच्चों को यौन अपराधों से सुरक्षा प्रदान करता है
+            और ऐसे मामलों से निपटने की कानूनी प्रक्रिया निर्धारित करता है।
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <td>2015</td>
+
+        <td>
+            Juvenile Justice (Care and Protection of Children) Act
+        </td>
+
+        <td>
+            <b>English:</b> Provides for care, protection,
+            rehabilitation and related matters concerning children.
+            <br><br>
+
+            <b>हिंदी:</b> बच्चों की देखभाल, संरक्षण, पुनर्वास और
+            संबंधित मामलों का प्रावधान करता है।
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <td>2016</td>
+
+        <td>
+            Rights of Persons with Disabilities Act
+        </td>
+
+        <td>
+            <b>English:</b> Provides rights and protections including
+            inclusive education for persons with disabilities.
+            <br><br>
+
+            <b>हिंदी:</b> दिव्यांग व्यक्तियों के अधिकारों और
+            समावेशी शिक्षा सहित विभिन्न संरक्षणों का प्रावधान करता है।
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <td>2016</td>
+
+        <td>
+            Child Labour (Prohibition and Regulation) Amendment Act
+        </td>
+
+        <td>
+            <b>English:</b> Strengthens legal restrictions concerning
+            employment of children and adolescents.
+            <br><br>
+
+            <b>हिंदी:</b> बच्चों और किशोरों के रोजगार से संबंधित
+            कानूनी प्रतिबंधों को मजबूत करता है।
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <td>2019</td>
+
+        <td>
+            Central Educational Institutions
+            (Reservation in Teachers' Cadre) Act
+        </td>
+
+        <td>
+            <b>English:</b> Provides a reservation framework for
+            teachers' cadres in specified central educational institutions.
+            <br><br>
+
+            <b>हिंदी:</b> निर्दिष्ट केंद्रीय शिक्षण संस्थानों में
+            शिक्षक संवर्ग में आरक्षण से संबंधित प्रावधान।
+        </td>
+
+    </tr>
+
+</table>
+
+</div>
+
+
+<!-- ======================================================
+     NEP 2020
+====================================================== -->
+
+<h2 id="nep" class="section-title">
+
+    🎓 National Education Policy 2020
+
+    <br>
+
+    राष्ट्रीय शिक्षा नीति 2020
+
+</h2>
+
+
+<div class="article important">
+
+    <h3>NEP 2020 — National Education Policy 2020</h3>
+
+    <p class="english">
+
+        <span class="label">English:</span>
+
+        NEP 2020 is India's national policy framework for transforming
+        education. It covers school education, higher education,
+        teacher education, vocational education, technology and
+        inclusive education.
+
+    </p>
+
+    <p class="hindi">
+
+        <span class="label">हिंदी:</span>
+
+        NEP 2020 भारत की शिक्षा व्यवस्था में परिवर्तन के लिए
+        राष्ट्रीय नीति का ढाँचा है। इसमें स्कूली शिक्षा, उच्च शिक्षा,
+        शिक्षक शिक्षा, व्यावसायिक शिक्षा, प्रौद्योगिकी और
+        समावेशी शिक्षा शामिल हैं।
+
+    </p>
+
+</div>
+
+
+<div class="nep-box">
+
+
+    <div class="nep-card">
+
+        <h3>1. 5+3+3+4 Structure</h3>
+
+        <p>
+            <b>English:</b>
+            School education is organized into Foundational,
+            Preparatory, Middle and Secondary stages.
+        </p>
+
+        <p>
+            <b>हिंदी:</b>
+            स्कूली शिक्षा को आधारभूत, तैयारी, मध्य और माध्यमिक
+            चरणों में व्यवस्थित किया गया है।
+        </p>
+
+    </div>
+
+
+    <div class="nep-card">
+
+        <h3>2. Foundational Literacy & Numeracy</h3>
+
+        <p>
+            <b>English:</b>
+            Strong emphasis on foundational literacy and numeracy
+            in the early years.
+        </p>
+
+        <p>
+            <b>हिंदी:</b>
+            प्रारंभिक वर्षों में मूलभूत साक्षरता और संख्यात्मक
+            ज्ञान पर विशेष जोर।
+        </p>
+
+    </div>
+
+
+    <div class="nep-card">
+
+        <h3>3. Early Childhood Education</h3>
+
+        <p>
+            <b>English:</b>
+            Emphasis on Early Childhood Care and Education (ECCE).
+        </p>
+
+        <p>
+            <b>हिंदी:</b>
+            प्रारंभिक बाल्यावस्था देखभाल एवं शिक्षा (ECCE) पर जोर।
+        </p>
+
+    </div>
+
+
+    <div class="nep-card">
+
+        <h3>4. Mother Tongue / Local Language</h3>
+
+        <p>
+            <b>English:</b>
+            The policy gives emphasis to home language, mother tongue,
+            local language or regional language in the early stages,
+            subject to its provisions.
+        </p>
+
+        <p>
+            <b>हिंदी:</b>
+            नीति प्रारंभिक चरणों में घर की भाषा, मातृभाषा, स्थानीय
+            या क्षेत्रीय भाषा पर जोर देती है, नीति के प्रावधानों के अधीन।
+        </p>
+
+    </div>
+
+
+    <div class="nep-card">
+
+        <h3>5. Experiential Learning</h3>
+
+        <p>
+            <b>English:</b>
+            Greater emphasis on experiential, holistic and
+            competency-based learning.
+        </p>
+
+        <p>
+            <b>हिंदी:</b>
+            अनुभवात्मक, समग्र और दक्षता-आधारित सीखने पर अधिक जोर।
+        </p>
+
+    </div>
+
+
+    <div class="nep-card">
+
+        <h3>6. Vocational Education</h3>
+
+        <p>
+            <b>English:</b>
+            Students are to receive greater exposure to vocational
+            education and practical skills.
+        </p>
+
+        <p>
+            <b>हिंदी:</b>
+            विद्यार्थियों को व्यावसायिक शिक्षा और व्यावहारिक
+            कौशल से अधिक परिचित कराने पर जोर।
+        </p>
+
+    </div>
+
+
+    <div class="nep-card">
+
+        <h3>7. Technology in Education</h3>
+
+        <p>
+            <b>English:</b>
+            Technology is encouraged as a tool to improve teaching,
+            learning and educational access.
+        </p>
+
+        <p>
+            <b>हिंदी:</b>
+            शिक्षण, सीखने और शिक्षा की पहुँच को बेहतर बनाने के लिए
+            प्रौद्योगिकी के उपयोग को प्रोत्साहित किया गया है।
+        </p>
+
+    </div>
+
+
+    <div class="nep-card">
+
+        <h3>8. Inclusive Education</h3>
+
+        <p>
+            <b>English:</b>
+            Emphasis on equitable and inclusive education,
+            particularly for disadvantaged groups.
+        </p>
+
+        <p>
+            <b>हिंदी:</b>
+            समान और समावेशी शिक्षा पर जोर, विशेषकर वंचित समूहों
+            के लिए।
+        </p>
+
+    </div>
+
+
+    <div class="nep-card">
+
+        <h3>9. Assessment Reform</h3>
+
+        <p>
+            <b>English:</b>
+            Assessment reforms emphasize competencies and
+            learning outcomes rather than rote memorization alone.
+        </p>
+
+        <p>
+            <b>हिंदी:</b>
+            मूल्यांकन सुधारों में केवल रटने के बजाय दक्षताओं और
+            सीखने के परिणामों पर जोर दिया गया है।
+        </p>
+
+    </div>
+
+
+    <div class="nep-card">
+
+        <h3>10. Multidisciplinary Education</h3>
+
+        <p>
+            <b>English:</b>
+            Greater flexibility and multidisciplinary learning
+            are emphasized, especially in higher education.
+        </p>
+
+        <p>
+            <b>हिंदी:</b>
+            विशेषकर उच्च शिक्षा में अधिक लचीलेपन और
+            बहुविषयक शिक्षा पर जोर दिया गया है।
+        </p>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+    <h2>🇮🇳 Constitution • Education • Students 🇮🇳</h2>
+
+    <p>
+        संविधान • शिक्षा • विद्यार्थी
+    </p>
+
+    <p>
+        Justice • Liberty • Equality • Fraternity
+    </p>
+
+    <p>
+        न्याय • स्वतंत्रता • समानता • बंधुता
+    </p>
+
+</footer>
+
+
+</body>
+</html>

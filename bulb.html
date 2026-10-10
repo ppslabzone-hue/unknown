@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Realistic Bulb</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle at center, #202020, #050505);
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        color: white;
+    }
+
+    .room {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Light glow behind bulb */
+    .light {
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        border-radius: 50%;
+        background: rgba(255, 200, 70, 0.08);
+        filter: blur(40px);
+        transition: 0.5s;
+    }
+
+    .light.on {
+        background: rgba(255, 190, 40, 0.45);
+        box-shadow:
+            0 0 80px 40px rgba(255, 190, 40, 0.25),
+            0 0 180px 80px rgba(255, 150, 20, 0.15);
+    }
+
+    /* Bulb */
+    .bulb-container {
+        position: relative;
+        width: 180px;
+        height: 270px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 2;
+    }
+
+    .bulb {
+        width: 145px;
+        height: 165px;
+        border-radius: 50% 50% 45% 45%;
+        background: linear-gradient(
+            135deg,
+            #555,
+            #222
+        );
+        border: 3px solid #111;
+        position: relative;
+        transition: 0.4s;
+    }
+
+    /* Realistic glass shine */
+    .bulb::before {
+        content: "";
+        position: absolute;
+        width: 35px;
+        height: 100px;
+        left: 22px;
+        top: 25px;
+        border-radius: 50%;
+        background: linear-gradient(
+            to right,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+        transform: rotate(15deg);
+    }
+
+    /* Filament */
+    .filament {
+        position: absolute;
+        left: 50%;
+        top: 65px;
+        width: 45px;
+        height: 65px;
+        transform: translateX(-50%);
+        border-left: 3px solid #444;
+        border-right: 3px solid #444;
+        border-bottom: 5px solid #444;
+        border-radius: 0 0 50% 50%;
+        transition: 0.3s;
+    }
+
+    /* Metal base */
+    .base {
+        width: 75px;
+        height: 65px;
+        margin-top: -10px;
+        border-radius: 5px 5px 18px 18px;
+        background: repeating-linear-gradient(
+            to bottom,
+            #aaa 0px,
+            #777 6px,
+            #444 10px
+        );
+        border: 2px solid #222;
+        box-shadow: inset 0 0 10px #111;
+    }
+
+    /* ON state */
+    .bulb.on {
+        background:
+            radial-gradient(
+                circle at 50% 45%,
+                #fffde0 0%,
+                #fff5a0 18%,
+                #ffd34e 45%,
+                #f39b00 75%,
+                #c66b00 100%
+            );
+
+        border-color: #ffbf35;
+
+        box-shadow:
+            0 0 25px #ffd34e,
+            0 0 60px #ffb300,
+            0 0 120px rgba(255, 170, 0, 0.8);
+    }
+
+    .bulb.on .filament {
+        border-color: white;
+        box-shadow:
+            0 0 8px white,
+            0 0 20px #fff,
+            0 0 35px #ff9d00;
+    }
+
+    /* Switch */
+    .switch-box {
+        position: absolute;
+        right: 12%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100px;
+        height: 150px;
+        background: linear-gradient(145deg, #333, #111);
+        border-radius: 12px;
+        border: 3px solid #555;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .switch {
+        width: 48px;
+        height: 85px;
+        background: #222;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+        border: 2px solid #555;
+    }
+
+    .switch-button {
+        position: absolute;
+        width: 35px;
+        height: 45px;
+        left: 4px;
+        top: 5px;
+        border-radius: 8px;
+        background: linear-gradient(145deg, #eee, #777);
+        transition: 0.25s;
+        box-shadow: 0 5px 10px #000;
+    }
+
+    .switch.on .switch-button {
+        top: 32px;
+        background: linear-gradient(145deg, #fff, #aaa);
+    }
+
+    .status {
+        position: absolute;
+        bottom: 30px;
+        font-size: 18px;
+        letter-spacing: 2px;
+        opacity: 0.8;
+    }
+
+    /* Ceiling wire */
+    .wire {
+        position: absolute;
+        top: 0;
+        width: 5px;
+        height: 130px;
+        background: #222;
+        z-index: 1;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="room">
+
+    <div class="wire"></div>
+
+    <div class="light" id="light"></div>
+
+    <div class="bulb-container">
+
+        <div class="bulb" id="bulb">
+            <div class="filament"></div>
+        </div>
+
+        <div class="base"></div>
+
+    </div>
+
+    <!-- Switch -->
+    <div class="switch-box">
+
+        <div class="switch" id="switch">
+            <div class="switch-button"></div>
+        </div>
+
+    </div>
+
+    <div class="status" id="status">
+        LIGHT OFF
+    </div>
+
+</div>
+
+<script>
+
+const bulb = document.getElementById("bulb");
+const light = document.getElementById("light");
+const switchButton = document.getElementById("switch");
+const status = document.getElementById("status");
+
+let isOn = false;
+
+switchButton.addEventListener("click", function () {
+
+    isOn = !isOn;
+
+    if (isOn) {
+
+        bulb.classList.add("on");
+        light.classList.add("on");
+        switchButton.classList.add("on");
+
+        status.innerHTML = "💡 LIGHT ON";
+
+    } else {
+
+        bulb.classList.remove("on");
+        light.classList.remove("on");
+        switchButton.classList.remove("on");
+
+        status.innerHTML = "LIGHT OFF";
+    }
+
+});
+
+</script>
+
+</body>
+</html>
